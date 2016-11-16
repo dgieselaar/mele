@@ -5,13 +5,14 @@
   "main": "build/index.js",
   "scripts": {
     "test": "jest",
-		"build": "webpack"
+		"build": "webpack",
+		"preversion": "test && webpack"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dgieselaar/mele.git"
   },
-  "author": "",
+  "author": "Dario Gieselaar <d.gieselaar@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/dgieselaar/mele/issues"
