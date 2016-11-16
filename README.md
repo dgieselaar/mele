@@ -105,5 +105,5 @@ Here's a list of commands you can use:
 
 ### One last question: isn't this a terrible idea?
 
-I don't really know. It's probably a bit brittle to start changing render instructions. But I'm not familair enough with the React codebase to be able to determine how sensible this approach is. It is however fully tested though, so we'll see soon enough when/if it breaks.
+I don't really know. It's probably a bit brittle to start changing render instructions. But I'm not familiar enough with the React codebase to be able to determine how sensible this approach is. It is however fully tested though, so we'll see soon enough when/if it breaks.
 
