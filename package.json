@@ -1,0 +1,52 @@
+{
+  "name": "react-mele",
+  "version": "1.0.0",
+  "description": "A tiny library to easily modify React element trees",
+  "main": "build/index.js",
+  "scripts": {
+    "test": "jest",
+		"build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dgieselaar/mele.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dgieselaar/mele/issues"
+  },
+  "homepage": "https://github.com/dgieselaar/mele#readme",
+	"peerDependencies": {
+		"react": "^15.x"
+	},
+  "devDependencies": {
+    "babel-core": "^6.18.2",
+    "babel-eslint": "^7.1.0",
+    "babel-jest": "^17.0.0",
+    "babel-loader": "^6.2.7",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "eslint": "^3.9.1",
+    "eslint-config-react": "^1.1.7",
+    "eslint-plugin-flowtype": "^2.25.0",
+    "eslint-plugin-react": "^6.6.0",
+    "flow-bin": "^0.34.0",
+    "jest": "^16.0.2",
+    "react": "^15.3.2",
+    "webpack": "^1.13.3"
+  },
+  "jest": {
+    "testPathDirs": [
+      "src"
+    ],
+    "testRegex": "test.js$"
+  },
+	"keywords": [
+		"react",
+		"element",
+		"tree",
+		"jquery",
+		"sizzle"
+	]
+}

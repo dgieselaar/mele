@@ -1,0 +1,28 @@
+{
+	"parser": "babel-eslint",
+	"plugins": [
+		"flowtype"
+	],
+	"extends": [
+		"react",
+		"plugin:flowtype/recommended"
+	],
+	"env": {
+		"jest": true,
+		"jasmine": true,
+		"node": true
+	},
+	"parserOptions": {
+		"ecmaFeatures": {
+			"jsx": true
+		}
+	},
+	"rules": {
+		"indent": "off",
+		"one-var": "off",
+		"prefer-reflect": "off",
+		"flowtype/space-after-type-colon": "off",
+		"flowtype/generic-spacing": "off",
+		"flowtype/union-intersection-spacing": "off"
+	}
+}
