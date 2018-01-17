@@ -4,10 +4,17 @@ module.exports = {
 	entry: './src/index.js',
 	output: {
 		path: path.join(__dirname, 'build'),
-		filename: 'mele.js'
+		filename: 'index.js',
+		library: 'mele',
+		libraryTarget: 'umd'
 	},
 	externals: {
-		react: "React"
+		react: {
+			root: 'React',
+			amd: 'react',
+			commonjs: 'react',
+			commonjs2: 'react'
+		}
 	},
 	module: {
 		loaders: [
