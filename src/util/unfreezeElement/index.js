@@ -1,11 +1,12 @@
 import React from 'react';
+import isString from '../isString';
 
 let unfreezeElement = (element:Object):Object => {
 	let obj:Object = element;
 
 	// I think React only freezes elements when in dev mode,
 	// so we might not need to clone object as mutable in production mode
-	if (Object.isFrozen(obj)) {
+	if (!isString(obj) && Object.isFrozen(obj)) {
 		obj = Object.assign(
 			{},
 			obj,

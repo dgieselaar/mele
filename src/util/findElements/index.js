@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
 import getSelector from '../getSelector';
+import isString from '../isString';
 import type { MatchingFunction } from '../parseSelector'; //eslint-disableline
 
 export type ElementNode = {
@@ -17,6 +18,10 @@ export default (root:any, selector:string|Function):Array<any> => {
 		parentNode:ElementNode;
 
 	let inspectElement = (element:any, index:number):any => {
+		if (isString(element)) {
+			return;
+		}
+
 		let node:ElementNode = { element, parent: parentNode, index };
 
 		if (matchingFunction(element)) {

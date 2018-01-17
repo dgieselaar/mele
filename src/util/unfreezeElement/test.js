@@ -22,7 +22,7 @@ test('unfreezes props', () => {
 });
 
 test('unfreezes all children', () => {
-	let element = <div key="foo"><span key="bar"/></div>;
+	let element = <div key="foo"><span key="bar">TEXT NODE</span></div>;
 
 	expect(Object.isFrozen(element.props.children)).toBe(true);
 

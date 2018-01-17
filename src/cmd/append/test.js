@@ -3,7 +3,10 @@ import theme from '../../theme';
 import type { Themer } from '../../theme';
 
 test('appends a child to the node\'s children', () => {
-	let element = <div><span/></div>,
+	let element = (
+		<div>
+			<span>TEXT NODE</span>
+		</div>),
 		themer:Themer = theme(element),
 		result:Object;
 

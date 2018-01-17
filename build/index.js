@@ -70,7 +70,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -114,18 +114,11 @@ exports.default = function (root, nodes, properties) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+var isString = function isString(obj) {
+  return typeof obj === 'string' || obj instanceof String;
+};
 
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _theme = __webpack_require__(3);
-
-var _theme2 = _interopRequireDefault(_theme);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _theme2.default;
+exports.default = isString;
 
 /***/ }),
 /* 3 */
@@ -135,34 +128,57 @@ exports.default = _theme2.default;
 
 
 Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _theme = __webpack_require__(4);
+
+var _theme2 = _interopRequireDefault(_theme);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = _theme2.default;
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _replace = __webpack_require__(4);
+var _replace = __webpack_require__(5);
 
 var _replace2 = _interopRequireDefault(_replace);
 
-var _addClass = __webpack_require__(5);
+var _addClass = __webpack_require__(6);
 
 var _addClass2 = _interopRequireDefault(_addClass);
 
-var _removeClass = __webpack_require__(6);
+var _removeClass = __webpack_require__(7);
 
 var _removeClass2 = _interopRequireDefault(_removeClass);
 
-var _after = __webpack_require__(7);
+var _after = __webpack_require__(8);
 
 var _after2 = _interopRequireDefault(_after);
 
-var _before = __webpack_require__(8);
+var _before = __webpack_require__(9);
 
 var _before2 = _interopRequireDefault(_before);
 
-var _append = __webpack_require__(9);
+var _append = __webpack_require__(10);
 
 var _append2 = _interopRequireDefault(_append);
 
-var _prepend = __webpack_require__(10);
+var _prepend = __webpack_require__(11);
 
 var _prepend2 = _interopRequireDefault(_prepend);
 
@@ -170,15 +186,15 @@ var _prop = __webpack_require__(1);
 
 var _prop2 = _interopRequireDefault(_prop);
 
-var _removeProp = __webpack_require__(11);
+var _removeProp = __webpack_require__(12);
 
 var _removeProp2 = _interopRequireDefault(_removeProp);
 
-var _findElements = __webpack_require__(12);
+var _findElements = __webpack_require__(13);
 
 var _findElements2 = _interopRequireDefault(_findElements);
 
-var _unfreezeElement = __webpack_require__(16);
+var _unfreezeElement = __webpack_require__(17);
 
 var _unfreezeElement2 = _interopRequireDefault(_unfreezeElement);
 
@@ -220,7 +236,7 @@ exports.default = function (root) {
 };
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -269,7 +285,7 @@ exports.default = function (root, nodes, fn) {
 };
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -296,7 +312,7 @@ exports.default = function (root, nodes, className) {
 };
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -327,39 +343,6 @@ exports.default = function (root, nodes, className) {
 };
 
 /***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = function (root, nodes, sibling) {
-	nodes.forEach(function (node) {
-		node.parent.element.props.children = _react2.default.Children.toArray(node.parent.element.props.children).reduce(function (prev, child, currentIndex) {
-			prev = prev.concat(sibling);
-
-			if (currentIndex === node.index) {
-				prev = prev.concat(sibling);
-			}
-
-			return prev;
-		}, []);
-	});
-
-	return root;
-};
-
-/***/ }),
 /* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -379,11 +362,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = function (root, nodes, sibling) {
 	nodes.forEach(function (node) {
 		node.parent.element.props.children = _react2.default.Children.toArray(node.parent.element.props.children).reduce(function (prev, child, currentIndex) {
+			prev = prev.concat(sibling);
+
 			if (currentIndex === node.index) {
 				prev = prev.concat(sibling);
 			}
-
-			prev = prev.concat(sibling);
 
 			return prev;
 		}, []);
@@ -409,9 +392,17 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = function (root, nodes, child) {
+exports.default = function (root, nodes, sibling) {
 	nodes.forEach(function (node) {
-		node.element.props.children = _react2.default.Children.toArray(node.element.props.children).concat(child);
+		node.parent.element.props.children = _react2.default.Children.toArray(node.parent.element.props.children).reduce(function (prev, child, currentIndex) {
+			if (currentIndex === node.index) {
+				prev = prev.concat(sibling);
+			}
+
+			prev = prev.concat(sibling);
+
+			return prev;
+		}, []);
 	});
 
 	return root;
@@ -436,7 +427,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = function (root, nodes, child) {
 	nodes.forEach(function (node) {
-		node.element.props.children = [child].concat(_react2.default.Children.toArray(node.element.props.children));
+		node.element.props.children = _react2.default.Children.toArray(node.element.props.children).concat(child);
 	});
 
 	return root;
@@ -444,6 +435,31 @@ exports.default = function (root, nodes, child) {
 
 /***/ }),
 /* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function (root, nodes, child) {
+	nodes.forEach(function (node) {
+		node.element.props.children = [child].concat(_react2.default.Children.toArray(node.element.props.children));
+	});
+
+	return root;
+};
+
+/***/ }),
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -471,7 +487,7 @@ exports.default = function (root, nodes, propName) {
 };
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -485,9 +501,13 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _getSelector = __webpack_require__(13);
+var _getSelector = __webpack_require__(14);
 
 var _getSelector2 = _interopRequireDefault(_getSelector);
+
+var _isString = __webpack_require__(2);
+
+var _isString2 = _interopRequireDefault(_isString);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -499,6 +519,10 @@ exports.default = function (root, selector) {
 	    parentNode = void 0;
 
 	var inspectElement = function inspectElement(element, index) {
+		if ((0, _isString2.default)(element)) {
+			return;
+		}
+
 		var node = { element: element, parent: parentNode, index: index };
 
 		if (matchingFunction(element)) {
@@ -514,7 +538,7 @@ exports.default = function (root, selector) {
 };
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -524,11 +548,11 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _getSelectorType = __webpack_require__(14);
+var _getSelectorType = __webpack_require__(15);
 
 var _getSelectorType2 = _interopRequireDefault(_getSelectorType);
 
-var _parseSelector = __webpack_require__(15);
+var _parseSelector = __webpack_require__(16);
 
 var selectors = _interopRequireWildcard(_parseSelector);
 
@@ -544,7 +568,7 @@ exports.default = function (selector) {
 };
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -583,7 +607,7 @@ exports.default = function (selector) {
 };
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -686,7 +710,7 @@ var type = exports.type = function type(selector) {
 };
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -700,6 +724,10 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _isString = __webpack_require__(2);
+
+var _isString2 = _interopRequireDefault(_isString);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var unfreezeElement = function unfreezeElement(element) {
@@ -707,7 +735,7 @@ var unfreezeElement = function unfreezeElement(element) {
 
 	// I think React only freezes elements when in dev mode,
 	// so we might not need to clone object as mutable in production mode
-	if (Object.isFrozen(obj)) {
+	if (!(0, _isString2.default)(obj) && Object.isFrozen(obj)) {
 		obj = Object.assign({}, obj, {
 			props: Object.assign({}, obj.props, {
 				// this changes the keys of a child
