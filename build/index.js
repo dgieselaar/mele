@@ -732,19 +732,22 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var unfreezeElement = function unfreezeElement(element) {
 	var obj = element;
-
 	// I think React only freezes elements when in dev mode,
 	// so we might not need to clone object as mutable in production mode
-	if (!(0, _isString2.default)(obj) && Object.isFrozen(obj)) {
-		obj = Object.assign({}, obj, {
-			props: Object.assign({}, obj.props, {
-				// this changes the keys of a child
-				children: _react2.default.Children.map(obj.props.children, unfreezeElement)
-			})
-		});
+	if ((0, _isString2.default)(obj) || !Object.isFrozen(obj)) {
+		return obj;
 	}
 
-	return obj;
+	var children = [];
+	_react2.default.Children.forEach(obj.props.children, function (el) {
+		return children.push(unfreezeElement(el));
+	});
+
+	return Object.assign({}, obj, {
+		props: Object.assign({}, obj.props, {
+			children: children
+		})
+	});
 };
 
 exports.default = unfreezeElement;

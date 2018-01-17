@@ -24,13 +24,11 @@ test('unfreezes props', () => {
 test('unfreezes all children', () => {
 	let element = <div key="foo"><span key="bar">TEXT NODE</span></div>;
 
-	expect(Object.isFrozen(element.props.children)).toBe(true);
-
 	expect(React.Children.count(element.props.children)).toBe(1);
+	expect(Object.isFrozen(element.props.children[0])).toBe(true);
 
 	element = unfreezeElement(element);
 
-	expect(Object.isFrozen(element.props.children)).toBe(false);
-
 	expect(React.Children.count(element.props.children)).toBe(1);
+	expect(Object.isFrozen(element.props.children[0])).toBe(false);
 });
